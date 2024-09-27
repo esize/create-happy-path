@@ -1,5 +1,11 @@
 # create-happy-path
 
+## 0.3.0
+
+### Minor Changes
+
+- 8c37e31: removed templating engine in favor of filesystem based approach
+
 ## 0.2.0
 
 ### Minor Changes
