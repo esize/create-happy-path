@@ -1,0 +1,12 @@
+"📌 area: cli":
+  - any: ["cli/**/*"]
+
+"📌 area: happy-app":
+  - any: ["cli/template/**/*"]
+
+"📚 documentation":
+  - any: ["docs/**/*"]
+  - any: ["**/*.md", "**/*.mdx"]
+
+"📌 area: ci":
+  - any: [".github/**/*"]

@@ -1,13 +1,59 @@
 {
-  "name": "create-happy-repo",
+  "name": "@happy-path/root",
+  "version": "0.0.0",
+  "type": "module",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/esize/create-happy-path.git"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  },
+  "packageManager": "pnpm@9.11.0",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "typecheck": "turbo typecheck",
+    "build:cli": "turbo --filter=create-happy-path build",
+    "build:docs": "turbo --filter=docs build",
+    "build": "turbo build",
+    "start:cli": "turbo --filter=create-happy-path start",
+    "start:docs": "turbo --filter=docs start",
+    "dev:cli": "turbo --filter=create-happy-path dev",
+    "dev:docs": "turbo --filter=docs dev",
+    "clean": "turbo clean && rm -rf node_modules",
+    "lint": "turbo lint && manypkg check",
+    "lint:fix": "turbo lint:fix && manypkg fix",
+    "format": "turbo format && prettier --write '*.{cjs,json}' --ignore-unknown --no-error-on-unmatched-pattern",
+    "format:check": "turbo format:check && prettier --check '*.{cjs,json}' --ignore-unknown --no-error-on-unmatched-pattern",
+    "check": "turbo lint typecheck format:check && manypkg check",
+    "release": "changeset version",
+    "pub:beta": "cd cli && pnpm pub:beta",
+    "pub:release": "cd cli && pnpm pub:release"
   },
   "devDependencies": {
-    "turbo": "^2.1.2"
+    "@types/eslint": "^9.6.1",
+    "@types/node": "^22.7.3",
+    "@typescript-eslint/eslint-plugin": "8.1.0",
+    "@typescript-eslint/parser": "8.1.0",
+    "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-isaacscript": "^4.0.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "prettier": "^3.3.3",
+    "turbo": "^2.1.2",
+    "typescript": "^4.9.5"
+  },
+  "resolutions": {
+    "@typescript-eslint/eslint-plugin": "8.1.0",
+    "@typescript-eslint/parser": "8.1.0"
+  },
+  "dependencies": {
+    "@changesets/changelog-github": "^0.5.0",
+    "@changesets/cli": "^2.27.8",
+    "@manypkg/cli": "^0.21.4",
+    "picocolors": "^1.1.0"
   }
 }
