@@ -4,13 +4,13 @@ import * as p from "@clack/prompts";
 import { program } from "commander";
 import color from "picocolors";
 
+import { VERSION } from "./constants.js";
+
 async function main() {
   console.clear();
 
   p.intro(
-    `${color.bgCyan(color.black(" create-nextjs-project "))} ${color.cyan(
-      "v0.1.1"
-    )}`
+    `${color.bgCyan(color.black(" create-nextjs-project "))} ${color.cyan(VERSION)}`
   );
 
   const project = await generateProject();
@@ -29,7 +29,7 @@ async function main() {
 program
   .name("create-nextjs-project")
   .description("CLI to generate a Next.js project")
-  .version("0.1.0")
+  .version(VERSION)
   .action(main);
 
 program.parse(process.argv);
