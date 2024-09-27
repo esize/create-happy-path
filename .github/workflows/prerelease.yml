@@ -9,11 +9,10 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-
 jobs:
   prerelease:
+    permissions:
+      contents: write
     if: |
       github.repository_owner == 'esize' &&
       contains(github.event.pull_request.labels.*.name, '🚀 autorelease')
