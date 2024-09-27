@@ -55,6 +55,7 @@
     "inquirer": "^8.2.0",
     "nunjucks": "^3.2.3",
     "ora": "^8.1.0",
+    "picocolors": "^1.1.0",
     "sort-package-json": "^2.10.1"
   },
   "devDependencies": {
