@@ -10,8 +10,7 @@ on:
 
 jobs:
   release:
-    permissions:
-      contents: write
+    permissions: write-all
     if: ${{ github.repository_owner == 'esize' }}
     name: Create a PR for release workflow
     runs-on: ubuntu-latest

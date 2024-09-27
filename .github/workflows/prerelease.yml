@@ -11,8 +11,7 @@ on:
 
 jobs:
   prerelease:
-    permissions:
-      contents: write
+    permissions: write-all
     if: |
       github.repository_owner == 'esize' &&
       contains(github.event.pull_request.labels.*.name, '🚀 autorelease')
