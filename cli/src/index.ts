@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-
-import { program } from "commander";
-import * as p from "@clack/prompts";
-import color from "picocolors";
 import { generateProject } from "@/commands/generate-project.js";
+import * as p from "@clack/prompts";
+import { program } from "commander";
+import color from "picocolors";
 
 async function main() {
   console.clear();

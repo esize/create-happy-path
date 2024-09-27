@@ -1,7 +1,5 @@
 import * as p from "@clack/prompts";
 import color from "picocolors";
-import path from "path";
-import fs from "fs/promises";
 
 export interface ProjectConfig {
   name: string;
