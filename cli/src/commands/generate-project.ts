@@ -33,8 +33,6 @@ export async function generateProject(): Promise<ProjectConfig | null> {
         p.confirm({
           message: "Would you like to include Redis configuration?",
         }),
-
-        
     },
     {
       onCancel: () => {
