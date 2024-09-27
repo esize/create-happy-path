@@ -1,5 +1,4 @@
-import path from "path";
-import { writeRenderedTemplate } from "@/utils/templating.js";
+import { writeAllTemplates } from "@/utils/templating.js";
 import * as p from "@clack/prompts";
 import color from "picocolors";
 
@@ -51,7 +50,7 @@ export async function generateProject(): Promise<ProjectConfig | null> {
   const spinner = p.spinner();
   spinner.start("Generating project");
 
-  await generateProjectFiles(project);
+  await writeAllTemplates(project);
 
   spinner.stop("Project generated");
 
@@ -77,70 +76,3 @@ export async function generateProject(): Promise<ProjectConfig | null> {
 }
 
 // ... previous code ...
-
-async function generateProjectFiles(config: ProjectConfig) {
-  const baseTemplates = [
-    "package.json.njk",
-    "tsconfig.json.njk",
-    "next.config.js.njk",
-    "README.md.njk",
-    ".env.local.njk",
-  ];
-
-  for (const template of baseTemplates) {
-    await writeRenderedTemplate(
-      path.join("base", template),
-      path.join(config.name, template.replace(".njk", "")),
-      config
-    );
-  }
-
-  // Generate app files
-  await writeRenderedTemplate(
-    path.join("app", "layout.tsx.njk"),
-    path.join(config.name, "app", "layout.tsx"),
-    config
-  );
-  await writeRenderedTemplate(
-    path.join("app", "page.tsx.njk"),
-    path.join(config.name, "app", "page.tsx"),
-    config
-  );
-
-  // Generate other files based on user choices
-  if (config.includeAdmin) {
-    await writeRenderedTemplate(
-      path.join("admin", "page.tsx.njk"),
-      path.join(config.name, "app", "admin", "page.tsx"),
-      config
-    );
-  }
-
-  if (config.includeDocs) {
-    await writeRenderedTemplate(
-      path.join("docs", "page.tsx.njk"),
-      path.join(config.name, "app", "docs", "page.tsx"),
-      config
-    );
-  }
-
-  if (config.includeRedis) {
-    await writeRenderedTemplate(
-      path.join("redis", "client.ts.njk"),
-      path.join(config.name, "lib", "redis.ts"),
-      config
-    );
-  }
-
-  // Always include db and auth
-  await writeRenderedTemplate(
-    path.join("lib", "db.ts.njk"),
-    path.join(config.name, "lib", "db.ts"),
-    config
-  );
-  await writeRenderedTemplate(
-    path.join("lib", "auth.ts.njk"),
-    path.join(config.name, "lib", "auth.ts"),
-    config
-  );
-}

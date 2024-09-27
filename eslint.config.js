@@ -18,13 +18,14 @@ export default [
     },
     settings: {
       react: {
-        version: "detect"
+        version: "detect",
+
       }
     }
   },
   { languageOptions: { globals: { ...globals.browser, ...globals.node } } },
   pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  react.configs.flat.recommended,
+
 
 ];
