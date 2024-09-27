@@ -8,6 +8,10 @@ on:
     types: [labeled]
     branches:
       - main
+
+permissions:
+  contents: write
+
 jobs:
   prerelease:
     if: |
